@@ -1,0 +1,25 @@
+{
+  "name": "ShoppingProject",
+  "version": "1.0.0",
+  "description": "React+Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w280749941/ShoppingProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/w280749941/ShoppingProject/issues"
+  },
+  "homepage": "https://github.com/w280749941/ShoppingProject#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2"
+  }
+}
