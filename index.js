@@ -1,13 +1,15 @@
 'use strict';
 
+const formidable = require('formidable');
+
 /* Adding required modules */
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const myLogger = require("morgan");
 const express = require('express');
 const routes = require("./routes");
-const path = require('path');
-const fs = require('fs');
+//const path = require('path');
+
 const app = express();
 
 /* Use required modules */
@@ -34,7 +36,7 @@ app.use('/products', routes);
 
 /* catch 404 and forward to error handler */
 app.use((req, res, next) => {
-	const err = new Error("Not Found");
+	const err = new Error("Not Found Page");
 	err.status = 404;
 	next(err);
 });
@@ -44,12 +46,36 @@ app.use((err, req, res, next) => {
 	res.status(err.status || 500);
 	res.json({
 		error: {
+			status: err.status,
 			message: err.message
 		}
 	});
 });
 
 /* Start server */
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log('Server is listening at:', app.get('port'));
 });
+
+/*
+app.get('/', (req,res) => {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
+    res.write('<input type="file" name="filetoupload"><br>');
+    res.write('<input type="submit">');
+    res.write('</form>');
+    return res.end();
+});
+app.post('/fileupload', (req,res) => {
+	    var form = new formidable.IncomingForm();
+	    form.parse(req, function (err, fields, files) {
+	      var oldpath = files.filetoupload.path;
+	      var newpath = __dirname + '/productImages/' + files.filetoupload.name;
+	      fs.rename(oldpath, newpath, function (err) {
+	        if (err) throw err;
+	        res.write('File uploaded and moved!');
+	        res.end();
+	      });
+	 });
+});
+*/
