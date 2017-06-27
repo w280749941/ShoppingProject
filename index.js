@@ -2,6 +2,7 @@
 
 /* Adding required modules */
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const myLogger = require("morgan");
 const express = require('express');
 const routes = require("./routes");
@@ -16,8 +17,20 @@ app.use(myLogger("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+/* Database setup */
+mongoose.connect('mongodb://localhost:27017/myFirstDB', error => {
+	if (error) console.error('Database connecting error:', error);
+})
+const db = mongoose.connection;
+db.on('error', (err) => {
+	console.error.bind(console, 'connection error:');
+});
+db.once('open', () => {
+	console.log('Database connection successful');
+});
+
 /* Passing routes to routes handler */
-app.use("/products", routes);
+app.use('/products', routes);
 
 /* catch 404 and forward to error handler */
 app.use((req, res, next) => {
