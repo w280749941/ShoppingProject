@@ -18,7 +18,13 @@ const productSchema = mongoose.Schema({
 		onSaleDate: Date,
     modifyDate: { type: Date, default: Date.now }
 });
-
+productSchema.pre("save", function(next){
+  // If a product out of quantity, set to not in stock.
+	if(this.quantity < 1) {
+    this.isInStock = false;
+  }
+	next();
+});
 const Product = mongoose.model('Product', productSchema);
 
 module.exports.Product = Product;

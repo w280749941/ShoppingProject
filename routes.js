@@ -41,12 +41,30 @@ router.get('/', (req,res) => {
   });
 });
 
-/* New Products */
+/* New Products in the last 10 days */
 router.get('/newarrivals', (req,res) => {
+  const tenDays =  new Date();
+  tenDays.setDate(tenDays.getDate() - 10);
+  Product.find({ 'forSaleDate': { $gte: tenDays } })
+    .exec((err, products) => {
+      if(err) return next(err);
+      res.json(products);
+  });
 });
 
 /* Hot Products */
 router.get('/hotproducts', (req,res) => {
+  Product.find({}).exec((err, products) => {
+    const total = products.reduce((acc, cur) => {
+      return acc + cur.soldQuantity;
+    },0);
+    const threshold = Math.ceil(total/products.length);
+    Product.find({ 'soldQuantity': { $gt: threshold } })
+      .exec((err, products) => {
+        if(err) return next(err);
+        res.json(products);
+      });
+  });
 });
 
 // Admin Panel

@@ -8,9 +8,10 @@ const mongoose = require("mongoose");
 const myLogger = require("morgan");
 const express = require('express');
 const routes = require("./routes");
-//const path = require('path');
 
+//const path = require('path');
 const app = express();
+process.env.TZ = "America/New_York";
 
 /* Use required modules */
 app.set('port', process.env.PORT || 8080);
