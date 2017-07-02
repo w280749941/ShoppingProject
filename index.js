@@ -8,10 +8,16 @@ const mongoose = require("mongoose");
 const myLogger = require("morgan");
 const express = require('express');
 const routes = require("./routes");
+const cors = require('cors')
 
 //const path = require('path');
 const app = express();
 process.env.TZ = "America/New_York";
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 
 /* Use required modules */
 app.set('port', process.env.PORT || 8080);
