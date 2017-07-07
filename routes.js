@@ -28,43 +28,67 @@ router.param("iID", (req,res,next,id) => {
   next();
 });
 
+router.post("/postnewproduct", function(req, res){
+  const imageUrl = req.headers.host + '/productImages/';
+  req.body.imageUrl = imageUrl + req.body.imageUrl;
+  console.log(req.body);
+	const product = new Product(req.body);
+	product.save(function(err, product){
+		if(err) return next(err);
+		res.status(201);
+		res.json(product);
+	});
+});
+
 // Send Image File (This is for testing purpose || Can be deleted)
 router.get('/productImages/:iID', (req,res) => {
   res.sendFile(req.imagePath);
 });
 
 /* GET All Products */
-router.get('/', (req,res) => {
-  Product.find({}).exec((err, products) => {
+router.get('/', (req,res,next) => {
+  Product.find({}).sort({forSaleDate: 1})
+		.exec((err, products) => {
     if(err) return next(err);
     res.json(products);
   });
 });
 
-/* New Products in the last 10 days */
-router.get('/newarrivals', (req,res) => {
+/* New Products in the last 5 days */
+router.get('/newarrivals', (req,res,next) => {
   const tenDays =  new Date();
-  tenDays.setDate(tenDays.getDate() - 10);
+  tenDays.setDate(tenDays.getDate() - 5);
   Product.find({ 'forSaleDate': { $gte: tenDays } })
+		.sort({forSaleDate: -1})
     .exec((err, products) => {
       if(err) return next(err);
       res.json(products);
   });
 });
 
-/* Hot Products */
-router.get('/hotproducts', (req,res) => {
-  Product.find({}).exec((err, products) => {
+/* Hot Products above average soldQuantity is considered hot*/
+router.get('/hotproducts', (req,res,next) => {
+  Product.find({})
+		.exec((err, products) => {
     const total = products.reduce((acc, cur) => {
       return acc + cur.soldQuantity;
     },0);
     const threshold = Math.ceil(total/products.length);
     Product.find({ 'soldQuantity': { $gt: threshold } })
+			.sort({soldQuantity: -1})
       .exec((err, products) => {
         if(err) return next(err);
         res.json(products);
       });
   });
+});
+
+/* On sale Products */
+router.get('/onsale', (req,res) => {
+	Product.find({ 'isOnSale': true }).exec((err, products) => {
+		if(err) return next(err);
+		res.json(products);
+	});
 });
 
 // Admin Panel

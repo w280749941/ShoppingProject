@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
-import Home from './Home';
 import NewArrivals from './NewArrivals';
 import HotProducts from './HotProducts';
 import Cart from './Cart';
@@ -20,8 +19,8 @@ const App = () => {
           <Route exact path="/" component={Body} />
           <Route path ="/newarrivals" component={NewArrivals} />
           <Route path ="/hotproducts" component={HotProducts} />
-          <Route path ="/cart" component={Cart} />
           <Route path ="/onsale" component={Sales} />
+          <Route path ="/cart" component={Cart} />
         </Switch>
       <Footer />
       </div>

@@ -23,9 +23,8 @@ class Header extends Component {
               <li><a href="/onsale">ON SALE</a></li>
             </ul>
 
-
             <form className="navbar-form navbar-right">
-              <button type="button" className="btn btn-default navbar-btn cartMargin">Cart</button>
+              <a href="/cart" className="btn btn-default navbar-btn cartMargin">Cart</a>
               <div className="form-group">
                 <input type="text" className="form-control" placeholder="Search"/>
               </div>
