@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import './Header.css';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {text: ''};
+  }
+  handleChange(e) {
+    this.setState({text: e.target.value});
+  }
   render() {
     return (
       <nav className="navbar navbar-default">
@@ -26,9 +34,9 @@ class Header extends Component {
             <form className="navbar-form navbar-right">
               <a href="/cart" className="btn btn-default navbar-btn cartMargin">Cart</a>
               <div className="form-group">
-                <input type="text" className="form-control" placeholder="Search"/>
+                <input type="text" className="form-control" placeholder="Search product" onChange={this.handleChange}/>
               </div>
-              <button type="submit" className="btn btn-default">Search</button>
+              <a href={"/find/"+this.state.text} className="btn btn-default">Search</a>
             </form>
           </div>
         </div>

@@ -10,9 +10,11 @@ const CartItem = props => {
     const index = localStorage.itemCount;
     localStorage.setItem('item'+index, JSON.stringify(product));
     localStorage.itemCount = Number(index) + 1;
+    window.location.reload();
+    /*
     const counter = Number(e.target.previousSibling.innerHTML) + 1;
     e.target.previousSibling.innerHTML = counter;
-    alert('Total items: ' + localStorage.itemCount);
+    */
   }
 
   // Reduce quantity
@@ -33,15 +35,7 @@ const CartItem = props => {
       }
     }
     localStorage.itemCount = Number(index) - 1;
-    if(counter === 1) {
-      console.log('Here');
-      window.location.reload();
-    } else {
-      console.log("I'm Counter: ");
-      console.log(counter);
-      e.target.nextSibling.innerHTML = Number(counter) - 1;
-      alert('Total items: ' + localStorage.itemCount);
-    }
+    window.location.reload();
   }
 
   return (
@@ -50,6 +44,9 @@ const CartItem = props => {
         <div className="col-xs-6 col-md-3 col-lg-3">
           <a href="#" className="thumbnail">
             <img src={'http://'+product.imageUrl} alt=""/>
+            <div className="caption">
+              <p><strong>{product.name}</strong></p>
+            </div>
           </a>
         </div>
         <div className="col-xs-4 col-md-7 col-lg-7 paddingTop6">

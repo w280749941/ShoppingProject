@@ -9,6 +9,7 @@ import NewArrivals from './NewArrivals';
 import HotProducts from './HotProducts';
 import Cart from './Cart';
 import Sales from './Sales';
+import FindProduct from './FindProduct';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path ="/hotproducts" component={HotProducts} />
           <Route path ="/onsale" component={Sales} />
           <Route path ="/cart" component={Cart} />
+          <Route path ="/find/:productName" component={FindProduct} />
         </Switch>
       <Footer />
       </div>

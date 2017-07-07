@@ -12,7 +12,7 @@ const Thumbnail = props => {
       const index = localStorage.itemCount;
       localStorage.setItem('item'+index, JSON.stringify(product));
       localStorage.itemCount = Number(index) + 1;
-      alert('Total items: ' + localStorage.itemCount);
+      alert("Added to cart");
     } else {
         alert("Sorry, your browser does not support Web Storage...");
     }
