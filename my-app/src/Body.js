@@ -32,11 +32,3 @@ class Body extends Component {
 }
 
 export default Body;
-/*
-price = {product.originalPrice}
-discountedPrice = {product.discountedPrice}
-isOnSale = {product.isOnSale}
-imgUrl={'http://'+product.imageUrl}
-imgLabel = {product.name}
-imgDescription = {product.description}
-*/

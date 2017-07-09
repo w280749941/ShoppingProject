@@ -40,12 +40,6 @@ class AdminThumbnail extends Component {
         product: updatedProduct,
         flag: 1,
       });
-      // For image preview.
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        document.getElementById("myImg").src = reader.result;
-      }
-      reader.readAsDataURL(target.files[0])
     } else {
       updatedProduct[name] = value;
       this.setState({
@@ -64,24 +58,22 @@ class AdminThumbnail extends Component {
     }).then(response => { return response.json(); })
       .then(data => {
         console.log(data);
-        // Execute this part only when there is file added.
         if(this.state.flag === 1) {
           const myFile = document.getElementById("myFile");
           let formData = new FormData();
-          formData.append('filetoupload', myFile.files[0], myFile.files[0].name);
+          formData.append('filetoupload', myFile.files.item(0), 'jordan-kaws.jpg');
           const requestOptions = {
             method: 'POST',
             body: formData,
           };
           fetch('http://localhost:8080/products/fileupload', requestOptions)
-          .then(response => { return response.json(); })
+          .then(response => {
+            return response.json(); })
             .then(data => {
               console.log(data);
-              window.location.reload();
             });
-        } else {
-          window.location.reload();
         }
+        window.location.reload();
       });
   }
   render() {
@@ -89,7 +81,7 @@ class AdminThumbnail extends Component {
       <div>
         <div className="col-sm-4 col-md-3 col-lg-3">
           <div className="thumbnail">
-            <img id="myImg" src={'http://'+this.state.product.imageUrl} alt="..." />
+            <img src={'http://'+this.state.product.imageUrl} alt="..." />
             <div className="caption">
               <h4>{this.state.product.name}</h4>
               <p>{this.state.product.description}</p>

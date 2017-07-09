@@ -30,11 +30,14 @@ router.param("iID", (req,res,next,id) => {
 });
 
 router.post("/fileupload", (req,res) => {
-	const form = new formidable.IncomingForm();
-	form.parse(req, (err, fields, files) => {
-		const oldpath = files.filetoupload.path;
-		const newpath = __dirname + '/productImages/' + files.filetoupload.name;
-		fs.rename(oldpath, newpath, (err) => {
+	var form = new formidable.IncomingForm();
+	form.parse(req, function (err, fields, files) {
+		console.log(fields);
+		console.log(files.File.path);
+		console.log(files.File.name);
+		var oldpath = files.filetoupload.path;
+		var newpath = __dirname + '/productImages/' + files.filetoupload.name;
+		fs.rename(oldpath, newpath, function (err) {
 			if (err) throw err;
 			res.json('File uploaded and moved!');
 			res.end();
