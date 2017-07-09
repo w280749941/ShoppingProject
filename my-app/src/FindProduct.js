@@ -29,16 +29,21 @@ class FindProduct extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          {this.state.products.map(function(product, index) {
-            return (
-              <Thumbnail
-                key={product._id}
-                product={product}
-              />
-            );
-          })}
-        </div>
+        {this.state.products
+          ? (
+          <div className="row">
+            {this.state.products.map(function(product, index) {
+              return (
+                <Thumbnail
+                  key={product._id}
+                  product={product}
+                />
+              );
+            })}
+          </div>)
+           : (<h1 className="text-center">No result, try a different search</h1>)
+        }
+
       </div>
     );
   }

@@ -52,7 +52,7 @@ const Cart = () => {
         );
       })}
       {total ? (<TotalSection total={total} />)
-             : (<h1 className="text-center">Your Cart is Empty</h1>)}
+             : (<h1 className="text-center">Your cart is empty</h1>)}
 
     </div>
   );

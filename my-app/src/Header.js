@@ -21,7 +21,7 @@ class Header extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">LOGO</a>
+            <a className="navbar-brand" href="/">Logo</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,6 +29,7 @@ class Header extends Component {
               <li><a href="/newarrivals">WHAT'S NEW<span className="sr-only">(current)</span></a></li>
               <li><a href="/hotproducts">WHAT'S HOT</a></li>
               <li><a href="/onsale">ON SALE</a></li>
+              <li><a href="/admin">Admin</a></li>
             </ul>
 
             <form className="navbar-form navbar-right">

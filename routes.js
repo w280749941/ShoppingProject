@@ -103,12 +103,14 @@ router.put('/modifyproduct/:pID', (req,res) => {
 
 /* Delete Products */
 router.delete('/deleteproduct/:pID', (req,res) => {
+
   req.product.remove((err) => {
 		req.product.save((err, product) => {
 			if(err) return next(err);
 			res.json(product);
 		});
 	});
+	//console.log(req.product);
 })
 
 /*

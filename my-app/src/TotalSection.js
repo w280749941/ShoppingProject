@@ -12,7 +12,7 @@ const TotalSection = props => {
         </div>
         <div className="col-xs-6 col-md-2 col-lg-2 text-center">
           <p><strong>Subtotal: ${total}</strong></p>
-          <p><strong>Taxes: ${Math.ceil(total*0.06 * 100) / 100}</strong></p>
+          <p><strong>Tax(6%): ${Math.ceil(total*0.06 * 100) / 100}</strong></p>
           <p><strong>Sum: ${Math.ceil(total*1.06 * 100) / 100}</strong></p>
         </div>
       </div>
