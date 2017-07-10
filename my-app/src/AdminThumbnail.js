@@ -88,14 +88,17 @@ class AdminThumbnail extends Component {
     return (
       <div>
         <div className="col-sm-4 col-md-3 col-lg-3">
-          <div className="thumbnail">
+          <div className="thumbnail onSizeChange">
             <img id="myImg" src={'http://'+this.state.product.imageUrl} alt="..." />
             <div className="caption">
               <h4>{this.state.product.name}</h4>
               <p>{this.state.product.description}</p>
               {this.state.product.isOnSale ? (<p><strong className='rightMargin textColor'>On sale: {this.state.product.discountedPrice}</strong><s>Price: {this.state.product.originalPrice}</s></p>)
                         : (<p><strong>Price: {this.state.product.originalPrice}</strong></p>)}
-              <p><button type="button" id='hideshow' className="btn btn-warning" onClick={this.handleSection}>Modify</button><button type="button" className="btn btn-danger pull-right" onClick={this.deleteItem}>Delete</button></p>
+              <p>
+                <button type="button" id='hideshow' className="btn btn-warning" onClick={this.handleSection}>Modify</button>
+                <button type="button" className="btn btn-danger pull-right" onClick={this.deleteItem}>Delete</button>
+              </p>
               <div id={this.state.product._id} className="targetElementDisplay">
                 <form id="myForm" onSubmit={this.handleSubmit}>
                     <p><strong>Name: </strong></p>

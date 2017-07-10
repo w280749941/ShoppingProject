@@ -131,19 +131,7 @@ router.delete('/deleteproduct/:pID', (req,res) => {
 Implement this later.
 POST New Products
 */
-router.post('/postnewpr32oduct', (req,res) => {
-	    const form = new formidable.IncomingForm();
-	    form.parse(req, (err, fields, files) => {
-	      const oldpath = files.filetoupload.path;
-	      const newpath = __dirname + '/productImages/' + files.filetoupload.name;
-	      fs.rename(oldpath, newpath, (err) => {
-	        if(err) return next(err);
-          // Redirect user here. res.send({redirect: '/'});
-	        res.write('File uploaded and moved!');
-	        res.end();
-	      });
-	 });
-});
+
 module.exports = router;
 
 
@@ -158,5 +146,19 @@ router.post("/postnewproduct", function(req, res){
 		res.status(201);
 		res.json(product);
 	});
+});
+
+router.post('/postnewpr32oduct', (req,res) => {
+	    const form = new formidable.IncomingForm();
+	    form.parse(req, (err, fields, files) => {
+	      const oldpath = files.filetoupload.path;
+	      const newpath = __dirname + '/productImages/' + files.filetoupload.name;
+	      fs.rename(oldpath, newpath, (err) => {
+	        if(err) return next(err);
+          // Redirect user here. res.send({redirect: '/'});
+	        res.write('File uploaded and moved!');
+	        res.end();
+	      });
+	 });
 });
 */

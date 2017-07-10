@@ -46,5 +46,36 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+    window.onresize = function (event) {
+      let thumbnailObjects = document.getElementsByClassName("onSizeChange");
+      if ($(window).width() >= 758) {
+        let max = 0;
+        for (let i=0; i<thumbnailObjects.length; i++) {
+          if (thumbnailObjects[i].offsetHeight > max) {
+            max = thumbnailObjects[i].offsetHeight;
+          }
+        }
+        for (let i=0; i<thumbnailObjects.length; i++) {
+          thumbnailObjects[i].style.height = max.toString()+"px";
+        }
+        console.log($(window).width());
+      } else if ($(window).width() >=645) {
+        console.log("Too Small To Change!!!");
+        console.log($(window).width());
+        for (let i=0; i<thumbnailObjects.length; i++) {
+          thumbnailObjects[i].style.height = ($(window).width()*0.9).toString()+"px";
+        }
+      } else {
+        console.log($(window).width());
+      }
+      /*
+      console.log(document.getElementsByClassName("thumbnail")[3].offsetHeight);
+      document.getElementsByClassName("thumbnail")[3].style.height = "356px";
+      console.log(document.getElementsByClassName("thumbnail")[3].offsetHeight);
+      document.getElementsByClassName("thumbnail")[3].style.height = 356;
+      console.log(document.getElementsByClassName("thumbnail")[3].offsetHeight);*/
+    }
+    </script>
   </body>
 </html>

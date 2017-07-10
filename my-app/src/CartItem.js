@@ -19,7 +19,7 @@ const CartItem = props => {
 
   // Reduce quantity
   const reduceQuantity = (e) => {
-    const counter = Number(e.target.nextSibling.innerHTML);
+    //const counter = Number(e.target.nextSibling.innerHTML);
     const index = localStorage.itemCount;
     // Or I can pass a callback function from parent class component to update state to update DOM.
     for (let key in localStorage) {
