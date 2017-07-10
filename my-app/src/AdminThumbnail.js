@@ -85,6 +85,10 @@ class AdminThumbnail extends Component {
       });
   }
   render() {
+    let needExtraLine = false;
+    if (this.state.product.name.length < 27) {
+      needExtraLine = true;
+    }
     return (
       <div>
         <div className="col-sm-4 col-md-3 col-lg-3">
@@ -92,6 +96,7 @@ class AdminThumbnail extends Component {
             <img id="myImg" src={'http://'+this.state.product.imageUrl} alt="..." />
             <div className="caption">
               <h4>{this.state.product.name}</h4>
+              {needExtraLine ? <br /> : ""}
               <p>{this.state.product.description}</p>
               {this.state.product.isOnSale ? (<p><strong className='rightMargin textColor'>On sale: {this.state.product.discountedPrice}</strong><s>Price: {this.state.product.originalPrice}</s></p>)
                         : (<p><strong>Price: {this.state.product.originalPrice}</strong></p>)}
