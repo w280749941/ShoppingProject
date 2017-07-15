@@ -86,8 +86,12 @@ class AdminThumbnail extends Component {
   }
   render() {
     let needExtraLine = false;
+    let needThreeDots = false;
+    const threshold = 37;
     if (this.state.product.name.length < 27) {
       needExtraLine = true;
+    } else if (this.state.product.name.length > threshold) {
+      needThreeDots = true;
     }
     return (
       <div>
@@ -95,7 +99,8 @@ class AdminThumbnail extends Component {
           <div className="thumbnail onSizeChange">
             <img id="myImg" src={'http://'+this.state.product.imageUrl} alt="..." />
             <div className="caption">
-              <h4>{this.state.product.name}</h4>
+              {needThreeDots ? <h4>{this.state.product.name.substring(0,threshold) + "..."}</h4>
+                             : <h4>{this.state.product.name}</h4>}
               {needExtraLine ? <br /> : ""}
               <p>{this.state.product.description}</p>
               {this.state.product.isOnSale ? (<p><strong className='rightMargin textColor'>On sale: {this.state.product.discountedPrice}</strong><s>Price: {this.state.product.originalPrice}</s></p>)
