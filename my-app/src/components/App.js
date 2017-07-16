@@ -12,13 +12,14 @@ import Sales from './Sales';
 import FindProduct from './FindProduct';
 import Admin from './Admin';
 
+import Homepage from './Homepage';
 const App = () => {
   return (
     <BrowserRouter>
       <div>
       <Header />
         <Switch>
-          <Route exact path="/" component={Body} />
+          <Route exact path="/" component={Homepage} />
           <Route path ="/newarrivals" component={NewArrivals} />
           <Route path ="/hotproducts" component={HotProducts} />
           <Route path ="/onsale" component={Sales} />

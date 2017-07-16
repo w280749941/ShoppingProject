@@ -71,7 +71,7 @@ router.get('/', (req,res,next) => {
 /* New Products in the last 5 days */
 router.get('/newarrivals', (req,res,next) => {
   const tenDays =  new Date();
-  tenDays.setDate(tenDays.getDate() - 5);
+  tenDays.setDate(tenDays.getDate() - 15);
   Product.find({ 'forSaleDate': { $gte: tenDays } })
 		.sort({forSaleDate: -1})
     .exec((err, products) => {
