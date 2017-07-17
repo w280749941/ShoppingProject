@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Thumbnail from './Thumbnail';
+import {restUrl} from '../index';
 
 class Sales extends Component {
   state = {products: []};
   componentWillMount() {
-    fetch('http://localhost:8080/products/onsale')
+    fetch(restUrl+'/products/onsale')
       .then(response => {
       return response.json(); })
       .then(data => {

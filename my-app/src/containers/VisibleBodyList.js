@@ -9,6 +9,8 @@ const getVisibleProducts = (products, filter) => {
       return products.filter( p => p.category.toLowerCase().includes('yeezy'));
     case 'SHOW_JORDAN':
       return products.filter( p => p.category.toLowerCase().includes('jordan'));
+    default:
+      return products;
   }
 }
 

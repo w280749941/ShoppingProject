@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import VisibleBodyList from '../containers/VisibleBodyList';
 import { receivedData } from '../actions';
-import store from '../index';
+import store, { restUrl } from '../index';
 
 class Homepage extends Component {
   componentWillMount() {
-    fetch('http://localhost:8080/products').then(response => {
+    fetch(restUrl+'/products').then(response => {
       return response.json(); })
       .then(data => {
           store.dispatch(receivedData(data));

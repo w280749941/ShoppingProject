@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './AdminThumbnail.css';
+import {restUrl} from '../index';
 
 class AdminThumbnail extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class AdminThumbnail extends Component {
   }
 
   deleteItem = () => {
-    fetch('http://localhost:8080/products/deleteproduct/'+this.state.product._id, {
+    fetch(restUrl+'/products/deleteproduct/'+this.state.product._id, {
       method: 'DELETE'
     }).then(response => {
       return response.json(); })
@@ -57,7 +58,7 @@ class AdminThumbnail extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    fetch('http://localhost:8080/products/modifyproduct/'+this.state.product._id, {
+    fetch(restUrl+'/products/modifyproduct/'+this.state.product._id, {
       method: 'PUT',
       headers: {"Content-Type" : "application/json"},
       body: JSON.stringify(this.state.product),
@@ -73,7 +74,7 @@ class AdminThumbnail extends Component {
             method: 'POST',
             body: formData,
           };
-          fetch('http://localhost:8080/products/fileupload', requestOptions)
+          fetch(restUrl+'/products/fileupload', requestOptions)
           .then(response => { return response.json(); })
             .then(data => {
               console.log(data);
@@ -118,7 +119,7 @@ class AdminThumbnail extends Component {
                     <p><strong>Description: </strong></p>
                     <input type="text" name="description" value={this.state.product.description} onChange={this.handleInputChange}/>
                     <p><strong>ImageUrl: </strong></p>
-                    <input type="url" name="imageUrl" value={this.state.product.imageUrl} onChange={this.handleInputChange}/>
+                    <input type="text" name="imageUrl" value={this.state.product.imageUrl} onChange={this.handleInputChange}/>
                     <p><strong>Quantity: </strong></p>
                     <input type="number" name="quantity" value={this.state.product.quantity} onChange={this.handleInputChange}/>
                     <p><strong>OriginalPrice: </strong></p>

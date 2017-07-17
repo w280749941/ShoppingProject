@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
@@ -12,7 +11,7 @@ let store = createStore(
   productApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
+export const restUrl = 'http://localhost:8080';//'http://108.2.105.162:8080';
 render(
   <Provider store={store}>
     <App />
@@ -21,4 +20,4 @@ render(
 );
 registerServiceWorker();
 //ReactDOM.render(<App />, document.getElementById('root'));
-export default store
+export default store;

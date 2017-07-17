@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 // App Components
 import Header from './Header';
-import Body from './Body';
+//import Body from './Body';
 import Footer from './Footer';
 import NewArrivals from './NewArrivals';
 import HotProducts from './HotProducts';
@@ -11,8 +10,8 @@ import Cart from './Cart';
 import Sales from './Sales';
 import FindProduct from './FindProduct';
 import Admin from './Admin';
-
 import Homepage from './Homepage';
+
 const App = () => {
   return (
     <BrowserRouter>

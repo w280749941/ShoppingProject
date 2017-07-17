@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Thumbnail from './Thumbnail';
+import restUrl from '../index';
 
 class FindProduct extends Component {
   constructor({match}) {
@@ -12,7 +13,7 @@ class FindProduct extends Component {
   // Load all products then search for product name includes target name
   // Can be chagned to let server do the heavy lifting (search)
   componentWillMount() {
-    fetch('http://localhost:8080/products').then(response => {
+    fetch(restUrl+'/products').then(response => {
       return response.json(); })
       .then(data => {
         const filteredProduct = [];

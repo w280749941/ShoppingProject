@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import AdminThumbnail from './AdminThumbnail';
 import NewProductForm from './NewProductForm';
+import {restUrl} from '../index';
+
 class Admin extends Component {
   constructor() {
     super();
@@ -9,7 +11,7 @@ class Admin extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:8080/products').then(response => {
+    fetch(restUrl+'/products').then(response => {
       return response.json(); })
       .then(data => {
         this.setState({

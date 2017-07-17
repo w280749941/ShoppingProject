@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {restUrl} from '../index';
 
 class NewProductForm extends Component {
   constructor() {
@@ -42,7 +42,7 @@ class NewProductForm extends Component {
   }
   handleSubmit = e => {
     e.preventDefault();
-    fetch('http://localhost:8080/products/postnewproduct/', {
+    fetch(restUrl+'/products/postnewproduct/', {
       method: 'POST',
       headers: {"Content-Type" : "application/json"},
       body: JSON.stringify(this.state.product),
@@ -56,7 +56,7 @@ class NewProductForm extends Component {
           method: 'POST',
           body: formData,
         };
-        fetch('http://localhost:8080/products/fileupload', requestOptions)
+        fetch(restUrl+'/products/fileupload', requestOptions)
         .then(response => { return response.json(); })
           .then(data => {
             console.log(data);
