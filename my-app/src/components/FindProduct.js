@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Thumbnail from './Thumbnail';
-import restUrl from '../index';
+import { restUrl } from '../index';
 
 class FindProduct extends Component {
   constructor({match}) {
