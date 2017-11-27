@@ -11,7 +11,7 @@ let store = createStore(
   productApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-export const restUrl = 'http://localhost:3032'; 
+export const restUrl = 'https://localhost:3032'; 
 render(
   <Provider store={store}>
     <App />
