@@ -14,7 +14,7 @@ const cors = require('cors')
 const app = express();
 process.env.TZ = "America/New_York";
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3031',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
